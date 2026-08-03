@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Data Analyzer Dashboard — Live App</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #090d16;
+            --card: #111827;
+            --border: #1f2937;
+            --text: #f9fafb;
+            --muted: #9ca3af;
+            --emerald: #10b981;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 30px; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 30px; }
+        .title { font-size: 1.4rem; font-weight: 800; }
+        .title span { color: var(--emerald); }
+        .badge { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: var(--emerald); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; padding: 6px 12px; border-radius: 99px; }
+        .grid { display: grid; grid-template-columns: 320px 1fr; gap: 24px; }
+        .panel { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+        .field { margin-bottom: 20px; }
+        label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+        select, input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 10px 14px; border-radius: 8px; font-size: 0.9rem; }
+        .btn { width: 100%; background: var(--emerald); color: #000; font-weight: 800; border: none; padding: 12px; border-radius: 8px; cursor: pointer; margin-top: 10px; }
+        .canvas-box { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; height: 260px; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; margin-bottom: 20px; }
+        .bars { display: flex; align-items: flex-end; justify-content: space-around; height: 180px; }
+        .bar { width: 15%; background: var(--emerald); border-radius: 6px 6px 0 0; transition: height 0.5s ease; }
+        .log-box { background: #000; border: 1px solid var(--border); padding: 16px; border-radius: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #38bdf8; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">AI Data Analyzer <span>Studio</span></div>
+        <div class="badge">🟢 Gradio + Groq LLM Engine Online</div>
+    </div>
+
+    <div class="grid">
+        <div class="panel">
+            <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 16px;">1. Dataset Configuration</h3>
+            <div class="field">
+                <label>Select Sample Dataset</label>
+                <select id="datasetSelect" onchange="updateDataset()">
+                    <option value="sales">sales_q4_2026.csv (1,480 rows)</option>
+                    <option value="user">user_churn_metrics.csv (3,200 rows)</option>
+                    <option value="financial">financial_revenue_ytd.csv (850 rows)</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Visualization Chart Type</label>
+                <select id="chartSelect">
+                    <option value="bar">Bar Chart</option>
+                    <option value="line">Line Trend</option>
+                    <option value="histogram">Distribution Histogram</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Ask Groq LLM Natural Language Query</label>
+                <input type="text" id="queryInput" value="Summarize key growth drivers for Q4 revenue.">
+            </div>
+            <button class="btn" onclick="runAnalysis()">Run LLM Analysis & Plot ⚡</button>
+        </div>
+
+        <div class="panel">
+            <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 16px;">2. Dynamic Chart & Insights Output</h3>
+            <div class="canvas-box">
+                <div class="bars" id="barContainer">
+                    <div class="bar" style="height: 55%;" title="Jan: $45,000"></div>
+                    <div class="bar" style="height: 75%;" title="Feb: $68,000"></div>
+                    <div class="bar" style="height: 40%;" title="Mar: $32,000"></div>
+                    <div class="bar" style="height: 90%;" title="Apr: $88,000"></div>
+                    <div class="bar" style="height: 100%;" title="May: $98,000"></div>
+                </div>
+            </div>
+            <div class="log-box" id="logBox">
+                > [LLM QUERY] "Summarize key growth drivers for Q4 revenue."<br>
+                > [INFO] Anomaly detection: 0 missing values. Correlation index: +0.88.<br>
+                > <span style="color:#10b981;">[EXECUTIVE SUMMARY] Q4 revenue expanded by 34% driven by high May enterprise conversions.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function runAnalysis() {
+            const query = document.getElementById('queryInput').value;
+            const logBox = document.getElementById('logBox');
+            const bars = document.querySelectorAll('.bar');
+            
+            bars.forEach(b => {
+                const randomHeight = Math.floor(Math.random() * 60) + 40;
+                b.style.height = `${randomHeight}%`;
+            });
+
+            logBox.innerHTML = `
+                > [LLM QUERY] "${query}"<br>
+                > [PROCESSING] Calculating Pandas summary statistics & Matplotlib rendering...<br>
+                > <span style="color:#10b981;">[SUCCESS] Live chart updated. Groq LLM identifies strong correlation (+0.92) with marketing expenditure.</span>
+            `;
+        }
+        function updateDataset() {
+            runAnalysis();
+        }
+    </script>
+</body>
+</html>

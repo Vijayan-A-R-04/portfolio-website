@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vijayan A R 's Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Vijayan A R, Information Technology Engineering student & Full Stack Web Developer proficient in Python, Django, Java, SQL, and Web Automation.">
+    <meta name="keywords"
+        content="Vijayan A R, Full Stack Web Developer, Django, Python, Java, Prodigy InfoTech Intern, Portfolio">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Vijayan A R 's Portfolio">
+    <meta property="og:description"
+        content="Information Technology student & Full-Stack Developer with experience at Prodigy InfoTech. Check out engineering projects, tech stack, and certifications.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/avatar.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Floating Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="brand-logo" aria-label="Home">
+                <span class="logo-avatar">
+                    <img src="assets/avatar.jpg" alt="Vijayan A R">
+                </span>
+                <span class="brand-name">Vijayan A R</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#techstack" class="nav-link">Tech Stack</a>
+                <a href="#certificates" class="nav-link">Certificates</a>
+                <a href="#contact" class="nav-link nav-btn-contact">Contact</a>
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle theme">
+                    <span class="theme-icon-sun" id="sunIcon" style="display: none;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                    <span class="theme-icon-moon" id="moonIcon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </button>
+            </nav>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="container">
+                <div class="hero-grid" id="about">
+                    <div class="hero-text-col">
+                        <h1 class="hero-headline">
+                            Engineering student with <br>
+                            <span class="highlight-text">full-stack development</span> <br>
+                            internship experience.
+                        </h1>
+                        <p class="hero-subtext">
+                            A driven Bachelor of Technology (BTech) student in Information Technology at Saranathan
+                            College of Engineering, expected to graduate in 2027. Recently completed an internship at
+                            Prodigy InfoTech, contributing to full-stack web development projects and gaining hands-on
+                            experience in Django, Core Python, and REST APIs. Holds certifications in Full-Stack Web
+                            Development, Advanced C, and Python programming.
+                            <br><br>
+                            Passionate about continuous learning and actively seeking opportunities where I can apply my
+                            knowledge, contribute to impactful projects, and grow as a software and AI professional. I
+                            am open to internships, entry-level roles, and networking with professionals in the
+                            technology industry.
+                        </p>
+
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn btn-primary">
+                                View Projects <span class="btn-arrow">↘</span>
+                            </a>
+                            <a href="assets/Vijayan_AR_Resume.pdf" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-secondary" id="downloadResumeBtn">
+                                Resume <span class="btn-arrow">📄</span>
+                            </a>
+                            <a href="#contact" class="btn btn-ghost">
+                                Contact Me <span class="btn-arrow">✉</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-avatar-col">
+                        <div class="avatar-card">
+                            <div class="avatar-circle">
+                                <img src="assets/avatar.jpg" alt="Vijayan A R Profile Photo" class="avatar-img">
+                            </div>
+                            <div class="avatar-glow"></div>
+                            <div class="avatar-tag">
+                                <span class="tag-title">Vijayan A R</span>
+                                <span class="tag-sub">B.Tech IT '27</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-badge hero-badge-avatar">
+                            <span class="pulse-dot"></span>
+                            <span>Seeking for entry level roles</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Strip -->
+                <div class="stats-strip">
+                    <div class="stat-item">
+                        <span class="stat-num">01</span>
+                        <span class="stat-desc">Software Internship</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">03</span>
+                        <span class="stat-desc">Featured Projects</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">14</span>
+                        <span class="stat-desc">Certifications &amp; Awards</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">2027</span>
+                        <span class="stat-desc">Graduation Year</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Engineering Projects -->
+        <section class="section projects-section" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-pill">PROJECTS</span>
+                        <h2 class="section-title">Selected Engineering Projects</h2>
+                    </div>
+                    <a href="https://github.com/Vijayan-A-R-04" target="_blank" rel="noopener noreferrer" class="header-link">
+                        Explore GitHub ↗
+                    </a>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 01 -->
+                    <article class="project-card" data-project-id="p1">
+                        <div class="project-top">
+                            <span class="project-index">01</span>
+                            <button class="project-btn" aria-label="View Project Details">↗</button>
+                        </div>
+                        <div class="project-main">
+                            <h3 class="project-title">AI Data Analyzer Dashboard</h3>
+                            <p class="project-summary">Intelligent data visualization and insights engine with custom
+                                natural language query processing.</p>
+                            <div class="tech-chips">
+                                <span class="chip">Python</span>
+                                <span class="chip">Pandas</span>
+                                <span class="chip">Gradio</span>
+                                <span class="chip">Matplotlib</span>
+                                <span class="chip">LLM</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 02 -->
+                    <article class="project-card" data-project-id="p2">
+                        <div class="project-top">
+                            <span class="project-index">02</span>
+                            <button class="project-btn" aria-label="View Project Details">↗</button>
+                        </div>
+                        <div class="project-main">
+                            <h3 class="project-title">User Authentication System</h3>
+                            <p class="project-summary">Production-grade security backend supporting salted password
+                                hashing, JWT authorization, and MongoDB validation.</p>
+                            <div class="tech-chips">
+                                <span class="chip">Node.js</span>
+                                <span class="chip">Express</span>
+                                <span class="chip">MongoDB</span>
+                                <span class="chip">JWT</span>
+                                <span class="chip">bcryptjs</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 03 (Full Width) -->
+                    <article class="project-card project-card-wide" data-project-id="p3">
+                        <div class="project-top">
+                            <span class="project-index">03</span>
+                            <button class="project-btn" aria-label="View Project Details">↗</button>
+                        </div>
+                        <div class="project-main">
+                            <h3 class="project-title">Local Store — E-Commerce Web App</h3>
+                            <p class="project-summary">Responsive e-commerce web application with client-side cart
+                                management, intuitive checkout flow, and fast asset loading.</p>
+                            <div class="tech-chips">
+                                <span class="chip">HTML5</span>
+                                <span class="chip">CSS3</span>
+                                <span class="chip">Vanilla JavaScript</span>
+                                <span class="chip">Responsive Cart</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Matrix -->
+        <section class="section techstack-section" id="techstack">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-pill">TECH STACK</span>
+                        <h2 class="section-title">Skills &amp; Technologies</h2>
+                    </div>
+                </div>
+
+                <div class="tech-matrix">
+                    <div class="tech-box">
+                        <div class="tech-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="tech-cat">Programming</h3>
+                        <div class="tech-tags-list">
+                            <span class="pill">Java</span>
+                            <span class="pill">Python</span>
+                            <span class="pill">C</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-box">
+                        <div class="tech-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <h3 class="tech-cat">Web Development</h3>
+                        <div class="tech-tags-list">
+                            <span class="pill">HTML</span>
+                            <span class="pill">CSS</span>
+                            <span class="pill">JavaScript</span>
+                            <span class="pill">Django</span>
+                            <span class="pill">REST APIs</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-box">
+                        <div class="tech-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M21 19c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                            </svg>
+                        </div>
+                        <h3 class="tech-cat">Data &amp; Core CS</h3>
+                        <div class="tech-tags-list">
+                            <span class="pill">SQL</span>
+                            <span class="pill">DBMS</span>
+                            <span class="pill">DSA</span>
+                            <span class="pill">OOP</span>
+                            <span class="pill">Operating Systems</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-box">
+                        <div class="tech-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="4 17 10 11 4 5"></polyline>
+                                <line x1="12" y1="19" x2="20" y2="19"></line>
+                            </svg>
+                        </div>
+                        <h3 class="tech-cat">Tools &amp; Environment</h3>
+                        <div class="tech-tags-list">
+                            <span class="pill">Git</span>
+                            <span class="pill">GitHub</span>
+                            <span class="pill">VS Code</span>
+                            <span class="pill">Computer Networks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section experience-section" id="experience">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-pill">EXPERIENCE</span>
+                        <h2 class="section-title">Internship &amp; Industry Exposure</h2>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="exp-role-row">
+                        <h3 class="exp-role">Full Stack Web Development Intern</h3>
+                        <a href="https://www.linkedin.com/company/prodigy-infotech/" target="_blank" rel="noopener noreferrer"
+                            class="exp-company">
+                            Prodigy InfoTech ↗
+                        </a>
+                    </div>
+                    <p class="exp-text">
+                        Developed responsive web applications, built RESTful APIs using Django framework, managed SQL
+                        database schemas, debugged application execution flows, and collaborated in a Git/GitHub
+                        environment.
+                    </p>
+                    <div class="exp-badges">
+                        <span class="exp-badge">Django</span>
+                        <span class="exp-badge">REST APIs</span>
+                        <span class="exp-badge">SQL</span>
+                        <span class="exp-badge">Git &amp; GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section class="section certs-section" id="certificates">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <span class="section-pill">CERTIFICATIONS</span>
+                        <h2 class="section-title">Verified Technical Credentials</h2>
+                    </div>
+                    <span class="header-sub">14 Credentials &amp; Awards</span>
+                </div>
+
+                <div class="certs-table">
+                    <!-- Symposium National Awards -->
+                    <a href="assets/Thiran_2025_Appathon_AI_Games_Certificates.pdf" target="_blank" rel="noopener noreferrer"
+                        class="cert-item" style="border-left: 3px solid var(--emerald);">
+                        <div class="cert-info">
+                            <span class="cert-title">🏆 1st Place Winner — Technical Appathon (Thiran 2025)</span>
+                            <span class="cert-org">Sri Eshwar College of Engineering</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="assets/Thiran_2025_Appathon_AI_Games_Certificates.pdf" target="_blank" rel="noopener noreferrer"
+                        class="cert-item" style="border-left: 3px solid var(--emerald);">
+                        <div class="cert-info">
+                            <span class="cert-title">🥉 3rd Place Winner — AI Games (Thiran 2025)</span>
+                            <span class="cert-org">Sri Eshwar College of Engineering</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="https://prodigyinfotech.dev/verify?cin=PIT/JUL25/10240" target="_blank" rel="noopener noreferrer"
+                        class="cert-item">
+                        <div class="cert-info">
+                            <span class="cert-title">Full Stack Web Development</span>
+                            <span class="cert-org">Prodigy InfoTech</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="https://www.linkedin.com/learning/certificates/fba34554d16006fa02f40e7fa283bf5f6eb40eb724737cb12837a56fcfc5a17b"
+                        target="_blank" rel="noopener noreferrer" class="cert-item">
+                        <div class="cert-info">
+                            <span class="cert-title">Career Essentials in GitHub Professional Certificate</span>
+                            <span class="cert-org">GitHub</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="assets/Enterprise_Python_Certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-item">
+                        <div class="cert-info">
+                            <span class="cert-title">Enterprise Python</span>
+                            <span class="cert-org">InLustro</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="https://verify.t4teq.com/?id=VI2323CPC075F0479&vf=Verify" target="_blank" rel="noopener noreferrer"
+                        class="cert-item">
+                        <div class="cert-info">
+                            <span class="cert-title">Programming in Python</span>
+                            <span class="cert-org">T4TEQ Software Solutions</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="https://www.credly.com/badges/13019ec2-b187-4799-913a-366f65030962/linked_in_profile"
+                        target="_blank" rel="noopener noreferrer" class="cert-item">
+                        <div class="cert-info">
+                            <span class="cert-title">Networking Basics</span>
+                            <span class="cert-org">Cisco Networking Academy</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="https://www.coursera.org/account/accomplishments/records/PM3FSSFINHQ6" target="_blank"
+                        rel="noopener noreferrer" class="cert-item">
+                        <div class="cert-info">
+                            <span class="cert-title">AWS CloudFront: Serve content from multiple S3 buckets</span>
+                            <span class="cert-org">Coursera</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="assets/Mastering_JavaScript_Certificate.pdf" target="_blank" rel="noopener noreferrer"
+                        class="cert-item">
+                        <div class="cert-info">
+                            <span class="cert-title">Mastering JavaScript Advanced Applications</span>
+                            <span class="cert-org">InLustro</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="https://verify.t4teq.com/?id=VI23178PC02AC0478&vf=Verify" target="_blank" rel="noopener noreferrer"
+                        class="cert-item">
+                        <div class="cert-info">
+                            <span class="cert-title">Programming in Advanced C</span>
+                            <span class="cert-org">T4TEQ Software Solutions</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="assets/Deep_Learning_Certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-item">
+                        <div class="cert-info">
+                            <span class="cert-title">Deep Learning for Complex Products</span>
+                            <span class="cert-org">InLustro</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="https://nptel.ac.in/noc/E_Certificate/NOC26CS70S16710134505022815" target="_blank"
+                        rel="noopener noreferrer" class="cert-item">
+                        <div class="cert-info">
+                            <span class="cert-title">Human Computer Interaction</span>
+                            <span class="cert-org">NPTEL</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="https://www.linkedin.com/learning/certificates/0542de0115260463265c2c11c976a27a8aff17a92b195b0f730116f09b743347"
+                        target="_blank" rel="noopener noreferrer" class="cert-item">
+                        <div class="cert-info">
+                            <span class="cert-title">Generative AI for Marketing with Microsoft 365 Copilot</span>
+                            <span class="cert-org">Microsoft</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+
+                    <a href="https://www.coursera.org/account/accomplishments/records/I41ZBZJM48FD" target="_blank"
+                        rel="noopener noreferrer" class="cert-item">
+                        <div class="cert-info">
+                            <span class="cert-title">Lead Generation Messenger Chatbot using Chatfuel</span>
+                            <span class="cert-org">Coursera</span>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact-section" id="contact">
+            <div class="container">
+                <div class="contact-header">
+                    <span class="section-pill">CONTACT</span>
+                    <h2 class="contact-title">Let's build something thoughtful.</h2>
+                    <p class="contact-subtitle">Have an opportunity or a project question? Send a message and I'll get
+                        back to you.</p>
+                </div>
+
+                <div class="contact-layout">
+                    <!-- Form -->
+                    <div class="contact-card">
+                        <h3 class="card-title">Send a message</h3>
+                        <form id="contactForm" class="contact-form">
+                            <!-- Web3Forms Config -->
+                            <input type="hidden" name="access_key" value="e9cf5ec4-17f3-49bd-8e09-acec7c1f1a34">
+                            <input type="hidden" name="subject" value="New Portfolio Message from Vijayan A R's Website">
+                            <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                            <div class="field">
+                                <label for="nameInput">Name</label>
+                                <input type="text" id="nameInput" name="name" required placeholder="Your name">
+                            </div>
+                            <div class="field">
+                                <label for="emailInput">Email</label>
+                                <input type="email" id="emailInput" name="email" required placeholder="you@example.com">
+                            </div>
+                            <div class="field">
+                                <label for="messageInput">Message</label>
+                                <textarea id="messageInput" name="message" rows="4" required
+                                    placeholder="Tell me a little about the opportunity..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">
+                                Send Message ✉
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Direct Connect Cards -->
+                    <div class="connect-cards">
+                        <div class="connect-top-bar">
+                            <span class="connect-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </span>
+                            <span class="connect-label">Let's connect</span>
+                        </div>
+
+                        <a href="mailto:vijayanar4@gmail.com" class="connect-card">
+                            <span class="card-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="card-type">Email</span>
+                                <span class="card-val">vijayanar4@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/Vijayan-A-R-04" target="_blank" rel="noopener noreferrer" class="connect-card">
+                            <span class="card-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="card-type">GitHub</span>
+                                <span class="card-val">github.com/Vijayan-A-R-04</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/vijayan-a-r-916297322" target="_blank" rel="noopener noreferrer"
+                            class="connect-card">
+                            <span class="card-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="card-type">LinkedIn</span>
+                                <span class="card-val">linkedin.com/in/vijayan-a-r-916297322</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-row">
+            <div class="footer-left">
+                <span class="footer-brand">Vijayan A R</span>
+            </div>
+
+            <div class="footer-nav">
+                <a href="#hero">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#certificates">Certificates</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="footer-socials">
+                <a href="https://github.com/Vijayan-A-R-04" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/vijayan-a-r-916297322" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                </a>
+                <a href="mailto:vijayanar4@gmail.com" aria-label="Email">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-copy container">
+            <p>© 2026 Vijayan A R. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div class="modal-backdrop" id="projectModal" aria-hidden="true">
+        <div class="modal-card">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toast">
+        <span id="toastMessage">Notification message</span>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>

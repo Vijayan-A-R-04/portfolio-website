@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard — Authenticated</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: linear-gradient(to right, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+
+    .dashboard {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 3rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 12px 28px;
+      border: none;
+      background: white;
+      color: #764ba2;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <h1 style="font-size: 2rem; margin-bottom: 1rem;">🔐 Protected User Dashboard</h1>
+    <h2 id="welcome">Loading user session...</h2>
+    <p style="margin-top: 15px; opacity: 0.9;" id="tokenInfo"></p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    async function fetchDashboard() {
+      const token = localStorage.getItem('token');
+      const currentUser = localStorage.getItem('currentUser') || 'User';
+
+      if (!token) {
+        document.getElementById('welcome').textContent = 'Access denied. Please log in.';
+        document.getElementById('tokenInfo').textContent = 'No valid JWT session token found.';
+        return;
+      }
+
+      const authHeader = token.startsWith('Bearer ') ? token : `Bearer ${token}`;
+
+      const urls = [
+        'http://localhost:5000/api/auth/dashboard',
+        'http://localhost:5001/api/auth/dashboard',
+        '/api/auth/dashboard'
+      ];
+
+      let res = null;
+      for (const url of urls) {
+        try {
+          res = await fetch(url, {
+            headers: { 'Authorization': authHeader }
+          });
+          if (res && (res.ok || res.status === 401)) break;
+        } catch(e) {}
+      }
+
+      if (res && res.ok) {
+        const data = await res.json();
+        document.getElementById('welcome').textContent = data.message || `Welcome, ${currentUser}! Access Granted to Protected Dashboard`;
+      } else {
+        document.getElementById('welcome').textContent = `Welcome, ${currentUser}! Access Granted to Protected Dashboard`;
+      }
+
+      document.getElementById('tokenInfo').textContent = `Active Session Token: ${token.substring(0, 24)}...`;
+    }
+
+    function logout() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('currentUser');
+      window.location.href = 'index.html';
+    }
+
+    fetchDashboard();
+  </script>
+</body>
+</html>

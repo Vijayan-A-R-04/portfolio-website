@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Store - Premium Full-Stack E-Commerce</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo" onclick="resetFilters()">
+        <span class="logo-icon">🌿</span>
+        <span class="logo-text">Local Store</span>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search fresh fruits, dairy, bakery..." oninput="handleSearch()">
+        <button id="clear-search-btn" class="hidden" onclick="clearSearch()">✕</button>
+      </div>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <button class="nav-btn theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+
+        <button class="nav-btn wishlist-btn" onclick="filterCategory('wishlist')" title="View Wishlist">
+          ❤️ <span class="action-label">Saved</span> (<span id="wishlist-count">0</span>)
+        </button>
+
+        <button class="nav-btn orders-btn" onclick="openOrdersModal()" title="My Orders">
+          📦 <span class="action-label">Orders</span>
+        </button>
+
+        <!-- User Account Container -->
+        <div id="user-nav-container">
+          <button class="nav-btn auth-btn" onclick="openAuthModal('login')">
+            👤 <span class="action-label">Sign In</span>
+          </button>
+        </div>
+
+        <button class="cart-btn" id="cart-btn" onclick="toggleCart()" aria-label="View Shopping Cart">
+          🛒 <span class="action-label">Cart</span> (<span id="cart-count">0</span>)
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">⚡ Express 30-Min Delivery • Full-Stack API Active</span>
+      <h1>Fresh. Organic. Local.</h1>
+      <p>Hand-picked farm-fresh produce and daily groceries delivered to your door.</p>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-container">
+    <!-- Category & Filter Bar -->
+    <section class="filter-bar">
+      <div class="category-pills" id="category-pills">
+        <button class="pill active" onclick="filterCategory('all')">✨ All Items</button>
+        <button class="pill" onclick="filterCategory('produce')">🍎 Fresh Produce</button>
+        <button class="pill" onclick="filterCategory('dairy')">🥛 Dairy & Eggs</button>
+        <button class="pill" onclick="filterCategory('bakery')">🍞 Bakery & Grains</button>
+        <button class="pill" onclick="filterCategory('pantry')">🧂 Pantry & Essentials</button>
+        <button class="pill" onclick="filterCategory('snacks')">🍫 Snacks & Beverages</button>
+      </div>
+
+      <div class="sort-wrapper">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select" onchange="handleSortChange()">
+          <option value="default">Featured</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="name-asc">Name: A to Z</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Product Grid Section -->
+    <section class="products-section">
+      <div class="section-header">
+        <h2 id="section-title">All Products</h2>
+        <span class="results-count" id="results-count">12 Items</span>
+      </div>
+
+      <div class="products-grid" id="product-list">
+        <!-- Products render dynamically from REST API -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon">🔍</div>
+        <h3>No matching items found</h3>
+        <p>Try searching for another keyword or clear filter criteria.</p>
+        <button class="btn btn-secondary" onclick="resetFilters()">Reset All Filters</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Authentication Modal (Login / Register) -->
+  <div id="auth-modal" class="modal-overlay hidden" onclick="closeAuthModal(event)">
+    <div class="modal-card auth-card">
+      <button class="close-modal-btn" onclick="closeAuthModalDirect()">✕</button>
+      
+      <!-- Tab Controls -->
+      <div class="auth-tabs">
+        <button id="tab-login-btn" class="auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
+        <button id="tab-register-btn" class="auth-tab" onclick="switchAuthTab('register')">Create Account</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form" onsubmit="handleLoginSubmit(event)">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="login-email" required placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="login-password" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      </form>
+
+      <!-- Registration Form -->
+      <form id="register-form" class="auth-form hidden" onsubmit="handleRegisterSubmit(event)">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="reg-name" required placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="reg-email" required placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="reg-password" required minlength="6" placeholder="At least 6 characters">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- My Orders Modal -->
+  <div id="orders-modal" class="modal-overlay hidden" onclick="closeOrdersModal(event)">
+    <div class="modal-card orders-card">
+      <button class="close-modal-btn" onclick="closeOrdersModalDirect()">✕</button>
+      <h2>📦 Order History</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Track your active and past grocery orders</p>
+      
+      <div id="orders-list-container" class="orders-list">
+        <!-- Order History loads dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div id="quickview-modal" class="modal-overlay hidden" onclick="closeQuickView(event)">
+    <div class="modal-card">
+      <button class="close-modal-btn" onclick="closeQuickViewModal()">✕</button>
+      <div class="quickview-body" id="quickview-body">
+        <!-- Filled dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Celebration Modal -->
+  <div id="checkout-modal" class="modal-overlay hidden" onclick="closeCheckoutModal(event)">
+    <div class="modal-card order-success-card">
+      <div class="success-checkmark">🎉</div>
+      <h2>Order Placed Successfully!</h2>
+      <p class="order-id">Order Reference: <strong id="order-ref">#LS-9482</strong></p>
+      
+      <div class="order-summary-box" id="order-summary-box">
+        <!-- Filled dynamically -->
+      </div>
+
+      <div class="delivery-timeline">
+        <div class="timeline-step done">✓ Order Confirmed</div>
+        <div class="timeline-step active">🚚 Packing & Delivery (30 mins)</div>
+      </div>
+
+      <button class="btn btn-primary btn-block" onclick="closeCheckoutModal()">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- Cart Backdrop Overlay -->
+  <div id="cart-overlay" class="cart-overlay hidden" onclick="toggleCart()"></div>
+
+  <!-- Cart Sidebar -->
+  <aside id="cart-section" class="cart-drawer hidden" aria-label="Shopping Cart">
+    <div class="cart-header">
+      <div class="cart-title">
+        <h2>Your Basket</h2>
+        <span class="cart-subtitle" id="cart-subtitle">0 Items</span>
+      </div>
+      <button class="close-cart-btn" onclick="toggleCart()" aria-label="Close Cart">✕</button>
+    </div>
+
+    <!-- Free Shipping Progress -->
+    <div class="delivery-progress-container">
+      <p id="delivery-progress-text">Add ₹150 more to unlock <strong>FREE Delivery!</strong></p>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="delivery-progress-bar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items List -->
+    <div class="cart-items-container" id="cart-items">
+      <!-- Items loaded dynamically -->
+    </div>
+
+    <!-- Cart Footer & Checkout -->
+    <div class="cart-footer">
+      <div class="promo-box">
+        <input type="text" id="promo-input" placeholder="Promo code (e.g. FRESH10)" style="text-transform:uppercase;">
+        <button onclick="applyPromo()">Apply</button>
+      </div>
+      <div id="promo-msg" class="promo-msg"></div>
+
+      <div class="price-breakdown">
+        <div class="price-row">
+          <span>Subtotal</span>
+          <span>₹<span id="cart-subtotal">0.00</span></span>
+        </div>
+        <div class="price-row" id="discount-row" style="display:none;">
+          <span>Discount</span>
+          <span class="discount-val">-₹<span id="cart-discount">0.00</span></span>
+        </div>
+        <div class="price-row">
+          <span>Delivery</span>
+          <span id="delivery-cost">₹30.00</span>
+        </div>
+        <div class="price-row total-row">
+          <span>Total Payable</span>
+          <span>₹<span id="cart-total">0.00</span></span>
+        </div>
+      </div>
+
+      <button id="checkout-btn" class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

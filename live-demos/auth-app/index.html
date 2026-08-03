@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuthVault - Modern Authentication System</title>
+  <meta name="description" content="Secure, robust Express & MongoDB authentication application with JWT dashboard access.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-glow"></div>
+  
+  <div class="app-container">
+    <header class="brand-header">
+      <div class="logo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span>AuthVault</span>
+      </div>
+      <div class="system-status" id="systemStatus">
+        <span class="status-dot"></span>
+        <span class="status-text">Server Online</span>
+      </div>
+    </header>
+
+    <main class="main-card glass-panel">
+      <!-- Auth Tab Navigation -->
+      <div class="tab-header" id="tabHeader">
+        <button class="tab-btn active" id="tabLoginBtn" onclick="switchTab('login')">Login</button>
+        <button class="tab-btn" id="tabRegisterBtn" onclick="switchTab('register')">Register</button>
+      </div>
+
+      <!-- Notification Toast Banner -->
+      <div class="alert-banner hidden" id="alertBanner"></div>
+
+      <!-- Login Form View -->
+      <div class="auth-view" id="loginView">
+        <h2 class="view-title">Welcome Back</h2>
+        <p class="view-subtitle">Enter your credentials to access your account dashboard.</p>
+        
+        <form id="loginForm" onsubmit="handleLogin(event)">
+          <div class="input-group">
+            <label for="loginUsername">Username</label>
+            <div class="input-wrapper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <input type="text" id="loginUsername" placeholder="e.g. alex_dev" required autocomplete="username">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="loginPassword">Password</label>
+            <div class="input-wrapper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <input type="password" id="loginPassword" placeholder="••••••••" required autocomplete="current-password">
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="loginSubmitBtn">
+            <span>Sign In</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Register Form View -->
+      <div class="auth-view hidden" id="registerView">
+        <h2 class="view-title">Create Account</h2>
+        <p class="view-subtitle">Join AuthVault and secure your session token.</p>
+        
+        <form id="registerForm" onsubmit="handleRegister(event)">
+          <div class="input-group">
+            <label for="regUsername">Username</label>
+            <div class="input-wrapper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <input type="text" id="regUsername" placeholder="e.g. alex_dev" required autocomplete="username">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="regPassword">Password</label>
+            <div class="input-wrapper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <input type="password" id="regPassword" placeholder="••••••••" required autocomplete="new-password">
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="regSubmitBtn">
+            <span>Create Account</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Dashboard View (Protected) -->
+      <div class="auth-view hidden" id="dashboardView">
+        <div class="dashboard-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span>JWT Protected Route</span>
+        </div>
+
+        <h2 class="view-title" id="dashWelcome">Welcome to your Dashboard</h2>
+        <p class="view-subtitle">Authenticated session loaded via JWT payload verification.</p>
+
+        <div class="info-card">
+          <div class="info-item">
+            <span class="info-label">User ID</span>
+            <code class="info-value" id="dashUserId">--</code>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Status</span>
+            <span class="info-status active">Authenticated</span>
+          </div>
+        </div>
+
+        <div class="token-container">
+          <div class="token-header">
+            <span>Stored JWT Token</span>
+            <button class="copy-btn" onclick="copyToken()">Copy</button>
+          </div>
+          <div class="token-box" id="tokenDisplay">No active token</div>
+        </div>
+
+        <div class="dashboard-actions">
+          <button class="secondary-btn" onclick="fetchDashboardData()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+            <span>Verify Token</span>
+          </button>
+          <button class="danger-btn" onclick="handleLogout()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="brand-footer">
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
